@@ -5,49 +5,115 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Билеты · Концерт 22.11.2026</title>
 <style>
-  :root{--bg:#12101a;--card:#1d1930;--accent:#c96a5a;--accent2:#e8a87c;--text:#efe9e0;--muted:#9a8fa8;--ok:#6fcf97;--line:#322a4d}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:"Segoe UI",system-ui,sans-serif;background:radial-gradient(ellipse at top,#241d3a 0%,var(--bg) 60%);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:24px;max-width:460px;width:100%;padding:32px 28px;box-shadow:0 20px 60px rgba(0,0,0,.45);text-align:center}
-  .badge{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);border:1px solid #4a3f5f;border-radius:999px;padding:6px 14px;margin-bottom:18px}
-  h1{font-size:24px;font-weight:700;margin-bottom:6px}
-  .sub{color:var(--muted);font-size:14px;margin-bottom:22px}
-  .top{border:1px solid rgba(111,207,151,.45);border-radius:16px;padding:16px;margin-bottom:26px}
-  .top .t{font-size:14px;font-weight:700;color:var(--ok);margin-bottom:10px}
-  .events{display:flex;flex-direction:column;gap:10px}
-  .event{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:14px;padding:13px 15px;text-align:left}
-  .event .name{font-size:15px;font-weight:600}
-  .event .meta{color:var(--muted);font-size:12px;margin-top:3px}
-  .event .price{font-size:16px;font-weight:700;color:var(--accent2);white-space:nowrap}
-  .old{color:var(--muted);font-weight:400;text-decoration:line-through;font-size:13px;margin-right:6px}
-  .cta{display:inline-block;width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:14px;padding:16px;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;margin-top:14px}
-  .cta:hover{filter:brightness(1.06)}
-  .bottom{border:1px dashed #4a4370;border-radius:16px;padding:14px 16px;margin-top:24px}
-  .bottom .t{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase}
-  .bottom p{color:var(--muted);font-size:12px;line-height:1.55}
-  .bottom .ph{margin-top:10px;font-size:13px;color:var(--accent2)}
-  footer{margin-top:18px;color:var(--muted);font-size:11px}
+  :root {
+    --bg: #12101a;
+    --card: #1d1930;
+    --accent: #c96a5a;
+    --accent2: #e8a87c;
+    --text: #efe9e0;
+    --muted: #9a8fa8;
+    --ok: #6fcf97;
+    --line: #322a4d;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: radial-gradient(ellipse at top, #241d3a 0%, var(--bg) 60%);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    max-width: 460px;
+    width: 100%;
+    padding: 32px 28px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.45);
+    text-align: center;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    border: 1px solid #4a3f5f;
+    border-radius: 999px;
+    padding: 6px 14px;
+    margin-bottom: 18px;
+  }
+  h1 { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: var(--muted); font-size: 14px; margin-bottom: 22px; }
+
+  .top { border: 1px solid rgba(111, 207, 151, .45); border-radius: 16px; padding: 16px; margin-bottom: 26px; }
+  .top .t { font-size: 14px; font-weight: 700; color: var(--ok); margin-bottom: 10px; letter-spacing: .02em; }
+  .events { display: flex; flex-direction: column; gap: 10px; }
+  .event {
+    display: flex; justify-content: space-between; align-items: center;
+    border: 1px solid var(--line); border-radius: 14px; padding: 13px 15px; text-align: left;
+  }
+  .event .name { font-size: 15px; font-weight: 600; }
+  .event .meta { color: var(--muted); font-size: 12px; margin-top: 3px; }
+  .event .price { font-size: 16px; font-weight: 700; color: var(--accent2); white-space: nowrap; }
+  .old { color: var(--muted); font-weight: 400; text-decoration: line-through; font-size: 13px; margin-right: 6px; }
+  .cta {
+    display: inline-block; width: 100%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; border: none; border-radius: 14px;
+    padding: 16px; font-size: 16px; font-weight: 700; cursor: pointer;
+    text-decoration: none; margin-top: 14px;
+  }
+  .cta:hover { filter: brightness(1.06); }
+
+  .bottom {
+    border: 1px dashed #4a4370; border-radius: 16px; padding: 14px 16px;
+    margin-top: 24px;
+  }
+  .bottom .t { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .bottom p { color: var(--muted); font-size: 12px; line-height: 1.55; }
+  .bottom .ph { margin-top: 10px; font-size: 13px; color: var(--accent2); }
+  footer { margin-top: 18px; color: var(--muted); font-size: 11px; }
 </style>
 </head>
 <body>
-<div class="card">
-  <div class="badge">Концерт · 22.11.2026 · 17:00</div>
-  <h1>Билеты</h1>
-  <div class="sub">ЦКС Филимонковское · м. Филатов Луг, пос. Марьино, 3</div>
-  <div class="top">
-    <div class="t">Онлайн-покупка со скидкой</div>
-    <div class="events">
-      <div class="event"><div><div class="name">Стандарт</div><div class="meta">входной билет</div></div><div class="price"><span class="old">900 ₽</span>700 ₽</div></div>
-      <div class="event"><div><div class="name">Комфорт</div><div class="meta">ближние ряды</div></div><div class="price"><span class="old">1200 ₽</span>950 ₽</div></div>
+  <div class="card">
+    <div class="badge">Концерт · 22.11.2026 · 17:00</div>
+    <h1>Билеты</h1>
+    <div class="sub">ЦКС Филимонковское · м. Филатов Луг, пос. Марьино, 3</div>
+
+    <div class="top">
+      <div class="t">✓ Онлайн-покупка со скидкой</div>
+      <div class="events">
+        <div class="event">
+          <div>
+            <div class="name">Стандарт</div>
+            <div class="meta">входной билет</div>
+          </div>
+          <div class="price"><span class="old">900 ₽</span>700 ₽</div>
+        </div>
+        <div class="event">
+          <div>
+            <div class="name">Комфорт</div>
+            <div class="meta">ближние ряды</div>
+          </div>
+          <div class="price"><span class="old">1200 ₽</span>950 ₽</div>
+        </div>
+      </div>
+      <a class="cta" href="#" onclick="alert('Подключение к билетному сервису — скоро. Ссылка появится здесь.'); return false;">Оформить онлайн-билет</a>
     </div>
-    <a class="cta" href="#">Оформить онлайн-билет</a>
+
+    <div class="bottom" id="tickets">
+      <div class="t">Билетный сервис</div>
+      <p>Подключение к сервису продажи билетов — в ближайшее время. Заглушка будет заменена на рабочую форму покупки.</p>
+      <div class="ph">Справки: +7 925 135-35-34</div>
+    </div>
+
+    <footer>Дополнение #tickets к афише · 22.11.2026<br>Ссылка: <a href="https://clck.ru/3WvMmA" style="color:var(--accent2)">clck.ru/3WvMmA</a></footer>
   </div>
-  <div class="bottom" id="tickets">
-    <div class="t">Билетный сервис</div>
-    <p>Подключение к сервису продажи билетов — в ближайшее время. Заглушка будет заменена на рабочую форму покупки.</p>
-    <div class="ph">Справки: +7 925 135-35-34</div>
-  </div>
-  <footer>Дополнение #tickets к афише · 22.11.2026</footer>
-</div>
 </body>
 </html>
