@@ -74,12 +74,27 @@
     <audio id="player" controls preload="auto" src="track.mp3"></audio>
     <p class="note">Полная программа — на концерте 22 ноября 2026 в 17:00,<br>ЦКС Филимонковское.</p>
     <footer>Плеер начнёт играть автоматически</footer>
-    <p class="hint" id="hint" style="display:none">Если звук не включился, нажмите на страницу или на кнопку ▶</p>
+    <p class="hint" id="hint" style="display:none">Если звук не включился — нажмите в любом месте страницы. Если и это не помогло, страница сама откроет звук через ~6 секунд.</p>
+    <p class="hint" id="redirecting" style="display:none">Открываем звук…</p>
   </div>
   <script>
     (function(){
       var player = document.getElementById('player');
       var hint = document.getElementById('hint');
+      var redirecting = document.getElementById('redirecting');
+      var done = false;
+      var timer = null;
+
+      function finish(ok){
+        if (done) return;
+        if (ok) {
+          done = true;
+          clearTimeout(timer);
+          hint.style.display = 'none';
+          redirecting.style.display = 'none';
+        }
+      }
+
       function tryPlay(){
         var p = player.play();
         if (p && p.catch) {
@@ -91,13 +106,30 @@
           });
         }
       }
+
+      // вариант D: пытаемся заиграть на месте
       tryPlay();
+      player.addEventListener('canplay', tryPlay);
+      player.addEventListener('playing', function(){ finish(true); });
+      player.addEventListener('play', function(){ finish(true); });
       document.addEventListener('click', function(){
         player.muted = false;
         player.volume = 1;
         tryPlay();
+        done = true;
+        clearTimeout(timer);
+        hint.style.display = 'none';
+        redirecting.style.display = 'none';
       }, { once: true });
-      player.addEventListener('canplay', tryPlay);
+
+      // план А: если звук не пошёл за 6 секунд — открываем прямой файл (нативный плеер)
+      timer = setTimeout(function(){
+        if (done) return;
+        if (!player.paused) return;
+        hint.style.display = 'none';
+        redirecting.style.display = 'block';
+        try { window.location.href = 'track.mp3'; } catch(e){}
+      }, 6000);
     })();
   </script>
 </body>
