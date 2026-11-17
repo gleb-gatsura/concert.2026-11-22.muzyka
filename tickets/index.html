@@ -70,6 +70,30 @@
   }
   .cta:hover { filter: brightness(1.06); }
 
+  .booking {
+    display: none;
+    border: 2px solid rgba(232,168,124,.75);
+    border-radius: 20px;
+    background: linear-gradient(160deg, rgba(232,168,124,.16), rgba(201,106,90,.10));
+    padding: 26px 20px 22px;
+    margin-top: 18px;
+    text-align: center;
+    animation: rise .35s ease;
+  }
+  .booking.show { display: block; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .booking .lbl {
+    font-size: 15px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--accent2); margin-bottom: 12px;
+  }
+  .booking .phone {
+    display: block;
+    font-size: 30px; font-weight: 800; letter-spacing: .03em;
+    color: var(--text); text-decoration: none;
+    line-height: 1.1; margin-bottom: 10px;
+  }
+  .booking .note { color: var(--muted); font-size: 13px; line-height: 1.55; }
+
   .bottom {
     border: 1px dashed #4a4370; border-radius: 16px; padding: 14px 16px;
     margin-top: 24px;
@@ -104,16 +128,30 @@
           <div class="price"><span class="old">2000 ₽</span>1500 ₽</div>
         </div>
       </div>
-      <a class="cta" href="#" onclick="alert('Подключение к билетному сервису — скоро. Ссылка появится здесь.'); return false;">Оформить онлайн-билет</a>
+      <a class="cta" href="#" id="bookBtn">Оформить онлайн-билет</a>
+
+      <div class="booking" id="booking">
+        <div class="lbl">Билеты — по приглашению</div>
+        <a class="phone" href="tel:+79251353534">+7 925 135-35-34</a>
+        <div class="note">Приглашение-билет оформляется по телефону.</div>
+      </div>
     </div>
 
     <div class="bottom" id="tickets">
       <div class="t">Билетный сервис</div>
-      <p>Подключение к сервису продажи билетов — в ближайшее время. Заглушка будет заменена на рабочую форму покупки.</p>
+      <p>Приглашения-билеты оформляются по телефону. Нажмите кнопку выше — и телефон для справок появится на экране.</p>
       <div class="ph">Телефон для справок: +7 925 135-35-34</div>
     </div>
 
     <footer>Дополнение #tickets к афише · 22.11.2026<br>Ссылка: <a href="https://clck.ru/3WvRZc" style="color:var(--accent2)">clck.ru/3WvRZc</a></footer>
   </div>
+  <script>
+    document.getElementById('bookBtn').addEventListener('click', function (e) {
+      e.preventDefault();
+      var b = document.getElementById('booking');
+      b.classList.toggle('show');
+      if (b.classList.contains('show')) b.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
 </body>
 </html>
